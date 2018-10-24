@@ -79,8 +79,5 @@ public abstract class Compte implements Serializable{
 	public void setOperations(Collection<Operation> operations) {
 		this.operations = operations;
 	}
-	
-	
-	
 
 }

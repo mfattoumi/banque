@@ -60,8 +60,5 @@ public class Client implements Serializable{
 		this.nom = nom;
 		this.email = email;
 	}
-	
-	
-	
 
 }

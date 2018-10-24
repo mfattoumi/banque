@@ -27,6 +27,4 @@ public class CompteEpargne extends Compte{
 		this.taux = taux;
 	}
 	
-	
-	
 }

@@ -27,5 +27,4 @@ public class CompteCourant extends Compte{
 		this.decouvert = decouvert;
 	}
 	
-	
 }
