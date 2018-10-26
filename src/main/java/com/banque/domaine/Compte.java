@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -19,6 +20,7 @@ import javax.persistence.OneToMany;
 @DiscriminatorColumn(name="TYPE_COMPTE",discriminatorType=DiscriminatorType.STRING,length=2)
 public abstract class Compte implements Serializable{
 	@Id
+	@Column(length = 30)
 	private String codeCompte;
 	private Date dateCreation;
 	private double solde;
