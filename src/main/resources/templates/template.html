@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<title>Ma banque</title>
+	<link rel="stylesheet" type="text/css"
+		  href="/css/bootstrat.min.css"
+		  th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" type="text/css"
+		  href="/css/mystyle.css"
+		  th:href="@{/css/mystyle.css}">
+</head>
+<body>
+	<header>
+		<div class="navbar navbar-default">
+			<div class="container-fluid">
+				<li><a th:href="@{/operations}">Operation</a></li>
+				<li><a th:href="@{/comptes}">Comptes</a></li>
+				<li><a th:href="@{/clients}">Clients</a></li>
+			</div>
+		</div>
+	</header>
+	<section layout:fragment="content"></section>
+	<footer>
+		<div class="navbar-fixed-bottom">
+			<small>L'adresse de banque</small>
+		</div>
+	</footer>
+</body>
+</html>

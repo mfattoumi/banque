@@ -1,11 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="template.html">
 <head>
 <meta charset="utf-8"/>
-<title>Votre Banque</title>
+<title>Ma Banque</title>
 </head>
 
 <body>
-	<h3>Test</h3>
+	<div layout:fragment="content">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Consultation d'un compte</div>
+				<div class="panel-body">
+					<form th:action="@{/consulterCompte}" method="get">
+						<div>
+							<label>Code Compte:</label>
+							<input type="text" name="codeCompte"/>
+							<button type="submit" class="btn btn-primary">Ok</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="panel panel-primary" th:if="${compte}">
+				<div class="panel-heading">Information sur le compte</div>
+				<div class="panel-body">
+					<div>
+						<label>Code:</label>
+						<label th:text="${compte.codeCompte}"></label>
+					</div>
+					<div>
+						<label>Solde:</label>
+						<label th:text="${compte.solde}"></label>
+					</div>
+					<div>
+						<label>Date Création:</label>
+						<label th:text="${compte.dateCreation}"></label>
+					</div>
+					<div>
+						<label>Type:</label>
+						<label th:text="${compte.class.simpleName}"></label>
+					</div>
+					<div th:if="${compte.class.simpleName=='CompteCourant'}">
+						<label>Decouvert:</label>
+						<label th:text="${compte.decouvert}"></label>
+					</div>
+					<div th:if="${compte.class.simpleName=='CompteEpargne'}">
+						<label>Taux:</label>
+						<label th:text="${compte.taux}"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary" th:if="${compte}">
+				<div class="panel-heading">Opérations sur le compte</div>
+				<div class="panel-body"></div>
+			</div>
+			<div class="panel panel-primary" th:if="${compte}">
+				<div class="panel-heading">Liste des opérations</div>
+				<div class="panel-body">
+					<table class="table table-striped">
+						<tr>
+							<th>Num</th><th>Type</th><th>Date</th><th>Montant</th>
+						</tr>
+						<tr th:each="o:${listOperations}">
+							<td th:text="${o.numero}"></td>
+							<td th:text="${o.class.simpleName}"></td>
+							<td th:text="${o.dateOperation}"></td>
+							<td th:text="${o.montant}"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
